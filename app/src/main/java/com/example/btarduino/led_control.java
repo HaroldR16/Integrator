@@ -103,7 +103,6 @@ public class led_control extends AppCompatActivity {
             HttpURLConnection req = (HttpURLConnection) url.openConnection();
             req.setRequestMethod("POST");
             req.setRequestProperty("Content-Type", "application/json");
-            req.setRequestProperty("Authorization", "WmV0dGFpR2Vua2lEYXlEYXlEYXk6MTIzNDU2Nzg5");
             req.setDoOutput(true);
             req.setDoInput(true);
             req.connect();
