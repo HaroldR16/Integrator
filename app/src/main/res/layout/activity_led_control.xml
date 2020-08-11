@@ -16,14 +16,14 @@
         app:layout_constraintBottom_toTopOf="@+id/bckBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintVertical_bias="0.147" />
 
     <Button
         android:id="@+id/bckBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="112dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,7 +36,7 @@
         android:text="Disconnect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -60,4 +60,20 @@
         app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toEndOf="@+id/lftBtn"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/postBtn"
+        android:layout_width="81dp"
+        android:layout_height="73dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/ic_launcher_background"
+        android:clickable="true"
+        app:backgroundTint="#8BC34A"
+        app:backgroundTintMode="add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="#FFFFFF"
+        tools:srcCompat="@tools:sample/avatars" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

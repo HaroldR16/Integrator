@@ -9,18 +9,28 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
 import java.util.UUID;
 
 public class led_control extends AppCompatActivity {
 
     Button btnAdelante, btnAtras, btnIzquierda, btnDerecha, btnDis;
+    FloatingActionButton postBtn;
     String address = null;
     private ProgressDialog progress;
     BluetoothAdapter bluetooth = null;
@@ -42,6 +52,7 @@ public class led_control extends AppCompatActivity {
         btnIzquierda = (Button)findViewById(R.id.lftBtn);
         btnDerecha = (Button)findViewById(R.id.rgtBtn);
         btnDis = (Button)findViewById(R.id.dscBtn);
+
 
         new ConnectBT().execute();
 
@@ -79,6 +90,43 @@ public class led_control extends AppCompatActivity {
                 disconnect();
             }
         });
+
+        postBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { postJSON(); }
+        });
+    }
+
+    private void postJSON() {
+        try {
+            URL url = new URL("http://574cd5a3e894.ngrok.io/postAndroid");
+            HttpURLConnection req = (HttpURLConnection) url.openConnection();
+            req.setRequestMethod("POST");
+            req.setRequestProperty("Content-Type", "application/json");
+            req.setRequestProperty("Authorization", "WmV0dGFpR2Vua2lEYXlEYXlEYXk6MTIzNDU2Nzg5");
+            req.setDoOutput(true);
+            req.setDoInput(true);
+            req.connect();
+
+            JSONObject jsonParam = new JSONObject();
+            jsonParam.put("uname", "test");
+            jsonParam.put("message", "test");
+
+            DataOutputStream os = new DataOutputStream(req.getOutputStream());
+            os.writeBytes(jsonParam.toString());
+
+            os.flush();
+            os.close();
+
+            Log.i("STATUS", String.valueOf(req.getResponseCode()));
+            Log.i("MSG" , req.getResponseMessage());
+
+            req.disconnect();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 
     private void adelante(){
