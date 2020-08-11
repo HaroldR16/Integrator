@@ -13,8 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -22,7 +20,7 @@ import java.util.UUID;
 
 public class led_control extends AppCompatActivity {
 
-    Button btnOn, btnOff, btnDis;
+    Button btnAdelante, btnAtras, btnIzquierda, btnDerecha, btnDis;
     String address = null;
     private ProgressDialog progress;
     BluetoothAdapter bluetooth = null;
@@ -39,23 +37,39 @@ public class led_control extends AppCompatActivity {
         address = newIntent.getStringExtra(MainActivity.EXTRA_ADDRESS);
         setContentView(R.layout.activity_led_control);
 
-        btnOn = (Button)findViewById(R.id.onBtn);
-        btnOff = (Button)findViewById(R.id.offBtn);
+        btnAdelante = (Button)findViewById(R.id.frwBtn);
+        btnAtras = (Button)findViewById(R.id.bckBtn);
+        btnIzquierda = (Button)findViewById(R.id.lftBtn);
+        btnDerecha = (Button)findViewById(R.id.rgtBtn);
         btnDis = (Button)findViewById(R.id.dscBtn);
 
         new ConnectBT().execute();
 
-        btnOn.setOnClickListener(new View.OnClickListener() {
+        btnAdelante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ledOn();
+                adelante();
             }
         });
 
-        btnOff.setOnClickListener(new View.OnClickListener() {
+        btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ledOff();
+                atras();
+            }
+        });
+
+        btnIzquierda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                izquierda();
+            }
+        });
+
+        btnDerecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                derecha();
             }
         });
 
@@ -67,20 +81,40 @@ public class led_control extends AppCompatActivity {
         });
     }
 
-    private void ledOn(){
+    private void adelante(){
         if(btSocket != null){
            try {
-               btSocket.getOutputStream().write("12".toString().getBytes());
+               btSocket.getOutputStream().write("10".toString().getBytes());
            }catch(IOException e){
                Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
         }
     }
 
-    private void ledOff(){
+    private void atras(){
         if(btSocket != null){
             try {
                 btSocket.getOutputStream().write("11".toString().getBytes());
+            }catch(IOException e){
+                Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void izquierda(){
+        if(btSocket != null){
+            try {
+                btSocket.getOutputStream().write("12".toString().getBytes());
+            }catch(IOException e){
+                Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void derecha(){
+        if(btSocket != null){
+            try {
+                btSocket.getOutputStream().write("13".toString().getBytes());
             }catch(IOException e){
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
