@@ -2,6 +2,7 @@ package com.example.btarduino;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -40,6 +42,7 @@ public class led_control extends AppCompatActivity {
     static final UUID id = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,31 +60,47 @@ public class led_control extends AppCompatActivity {
 
         new ConnectBT().execute();
 
-        btnAdelante.setOnClickListener(new View.OnClickListener() {
+        btnAdelante.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
-            public void onClick(View v) {
-                adelante();
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    adelante();
+                }
+                return false;
             }
         });
 
-        btnAtras.setOnClickListener(new View.OnClickListener() {
+        btnAtras.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
-            public void onClick(View v) {
-                atras();
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    atras();
+                }
+                return false;
             }
         });
 
-        btnIzquierda.setOnClickListener(new View.OnClickListener() {
+        btnIzquierda.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
-            public void onClick(View v) {
-                izquierda();
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    izquierda();
+                }
+                return false;
             }
         });
 
-        btnDerecha.setOnClickListener(new View.OnClickListener() {
+        btnDerecha.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
-            public void onClick(View v) {
-                derecha();
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    derecha();
+                }
+                return false;
             }
         });
 
