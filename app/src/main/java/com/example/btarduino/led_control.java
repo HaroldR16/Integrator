@@ -100,7 +100,7 @@ public class led_control extends AppCompatActivity {
 
     private void postJSON() {
         try {
-            URL url = new URL("http://574cd5a3e894.ngrok.io/postAndroid");
+            URL url = new URL("http://r2bis.ngrok.io/postAndroid");
             HttpURLConnection req = (HttpURLConnection) url.openConnection();
             req.setRequestMethod("POST");
             req.setRequestProperty("Content-Type", "application/json");
