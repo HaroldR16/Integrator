@@ -52,6 +52,7 @@ public class led_control extends AppCompatActivity {
         btnIzquierda = (Button)findViewById(R.id.lftBtn);
         btnDerecha = (Button)findViewById(R.id.rgtBtn);
         btnDis = (Button)findViewById(R.id.dscBtn);
+        postBtn = (FloatingActionButton)findViewById(R.id.postBtn);
 
 
         new ConnectBT().execute();
