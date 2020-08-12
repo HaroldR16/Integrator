@@ -63,30 +63,32 @@ public class led_control extends AppCompatActivity {
         btnAdelante.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                do {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     adelante();
-                }while (event.getAction() == MotionEvent.ACTION_DOWN);
-                return false;
+                    return true;
+                }
+                return true;
             }
         });
 
         btnAtras.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                do {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     atras();
-                }while (event.getAction() == MotionEvent.ACTION_DOWN);
-                return false;
+                    return true;
+                }
+                return true;
             }
         });
 
         btnIzquierda.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                do {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     izquierda();
-                }while (event.getAction() == MotionEvent.ACTION_DOWN);
-
+                    return true;
+                }
                 return true;
             }
         });
@@ -94,11 +96,14 @@ public class led_control extends AppCompatActivity {
         btnDerecha.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                do {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     derecha();
-                }while (event.getAction() == MotionEvent.ACTION_DOWN);
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                        return true;
+                }
 
-                return false;
+                return true;
             }
         });
 
@@ -154,6 +159,7 @@ public class led_control extends AppCompatActivity {
                Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
         }
+        adelante();
     }
 
     private void atras(){
@@ -164,6 +170,7 @@ public class led_control extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
         }
+        atras();
     }
 
     private void izquierda(){
@@ -174,6 +181,7 @@ public class led_control extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
         }
+        izquierda();
     }
 
     private void derecha(){
@@ -184,6 +192,7 @@ public class led_control extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
         }
+        derecha();
     }
 
     private void disconnect(){
