@@ -132,7 +132,7 @@ public class led_control extends AppCompatActivity {
     private void adelante(){
         if(btSocket != null){
            try {
-               btSocket.getOutputStream().write("10".toString().getBytes());
+               btSocket.getOutputStream().write("0".toString().getBytes());
            }catch(IOException e){
                Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
@@ -142,7 +142,7 @@ public class led_control extends AppCompatActivity {
     private void atras(){
         if(btSocket != null){
             try {
-                btSocket.getOutputStream().write("11".toString().getBytes());
+                btSocket.getOutputStream().write("1".toString().getBytes());
             }catch(IOException e){
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
@@ -152,7 +152,7 @@ public class led_control extends AppCompatActivity {
     private void izquierda(){
         if(btSocket != null){
             try {
-                btSocket.getOutputStream().write("12".toString().getBytes());
+                btSocket.getOutputStream().write("2".toString().getBytes());
             }catch(IOException e){
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
@@ -162,7 +162,7 @@ public class led_control extends AppCompatActivity {
     private void derecha(){
         if(btSocket != null){
             try {
-                btSocket.getOutputStream().write("13".toString().getBytes());
+                btSocket.getOutputStream().write("3".toString().getBytes());
             }catch(IOException e){
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
