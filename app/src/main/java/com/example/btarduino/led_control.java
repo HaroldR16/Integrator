@@ -61,45 +61,43 @@ public class led_control extends AppCompatActivity {
         new ConnectBT().execute();
 
         btnAdelante.setOnTouchListener(new View.OnTouchListener() {
-            @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                do {
                     adelante();
-                }
+                }while (event.getAction() == MotionEvent.ACTION_DOWN);
                 return false;
             }
         });
 
         btnAtras.setOnTouchListener(new View.OnTouchListener() {
-            @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                do {
                     atras();
-                }
+                }while (event.getAction() == MotionEvent.ACTION_DOWN);
                 return false;
             }
         });
 
         btnIzquierda.setOnTouchListener(new View.OnTouchListener() {
-            @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                do {
                     izquierda();
-                }
-                return false;
+                }while (event.getAction() == MotionEvent.ACTION_DOWN);
+
+                return true;
             }
         });
 
         btnDerecha.setOnTouchListener(new View.OnTouchListener() {
-            @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                do {
                     derecha();
-                }
+                }while (event.getAction() == MotionEvent.ACTION_DOWN);
+
                 return false;
             }
         });
