@@ -1,0 +1,19 @@
+<%- include('ele/header')%>
+<%- include('ele/navbar')%>
+
+<div class="container mt-5 pb-5">
+    <table class="table">
+        <thead class="text-center" id="idhead">
+            <th scope="col">
+                <%= data.user %>
+            </th>
+        </thead>
+        <tbody class="text-center">
+                <tr>
+                    <td><%= data.totalDistance %></td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+<%- include('ele/scripts')%>
+<%- include('ele/footer')%>

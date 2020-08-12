@@ -1,0 +1,33 @@
+<%- include('ele/header')%>
+<%- include('ele/navbar')%>
+
+<div class="container mt-5 pb-5">
+    <table class="table">
+        <thead class="minecraft-bg" id="idhead">
+            <th scope="col">
+                User ID
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Password
+            </th>
+            <th>
+                Total distance
+            </th>
+        </thead>
+        <tbody>
+            <% for(let i = 0; i < data.length; i++) {%>
+                <tr>
+                    <td><%= data[i]._id %></td>
+                    <td><%= data[i].user %></td>
+                    <td><%= data[i].password %></td>
+                    <td><%= data[i].totalDistance %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+<%- include('ele/scripts')%>
+<%- include('ele/footer')%>
