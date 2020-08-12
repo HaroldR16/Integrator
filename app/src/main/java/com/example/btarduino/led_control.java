@@ -67,6 +67,7 @@ public class led_control extends AppCompatActivity {
                     adelante();
                     return true;
                 }if(event.getAction() == MotionEvent.ACTION_UP) {
+                    stop();
                     return false;
                 }
                 return true;
@@ -80,6 +81,7 @@ public class led_control extends AppCompatActivity {
                     atras();
                     return true;
                 }if(event.getAction() == MotionEvent.ACTION_UP) {
+                    stop();
                     return false;
                 }
                 return true;
@@ -93,6 +95,7 @@ public class led_control extends AppCompatActivity {
                     izquierda();
                     return true;
                 }if(event.getAction() == MotionEvent.ACTION_UP) {
+                    stop();
                     return false;
                 }
                 return true;
@@ -107,7 +110,8 @@ public class led_control extends AppCompatActivity {
                     return true;
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP) {
-                        return false;
+                    stop();
+                    return false;
                 }
 
                 return true;
@@ -166,6 +170,7 @@ public class led_control extends AppCompatActivity {
                Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
         }
+        adelante();
     }
 
     private void atras(){
@@ -176,6 +181,7 @@ public class led_control extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
         }
+        atras();
     }
 
     private void izquierda(){
@@ -186,6 +192,7 @@ public class led_control extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
         }
+        izquierda();
     }
 
     private void derecha(){
@@ -196,6 +203,18 @@ public class led_control extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
             }
         }
+        derecha();
+    }
+
+    private void stop(){
+        if(btSocket != null){
+            try {
+                btSocket.getOutputStream().write("4".toString().getBytes());
+            }catch(IOException e){
+                Toast.makeText(getApplicationContext(), "send error", Toast.LENGTH_LONG).show();
+            }
+        }
+        stop();
     }
 
     private void disconnect(){
